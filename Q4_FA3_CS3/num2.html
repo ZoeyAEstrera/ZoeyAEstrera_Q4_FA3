@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacts List</title>
+</head>
+<body>
+  <h2>Contacts List (Max 7)</h2>
+  <input type="text" id="nameInput" placeholder="Enter a name">
+  <button onclick="addName()">Add</button>
+  <button onclick="removeName()">Remove</button>
+  <div id="contactsOutput"></div>
+
+  <script>
+    let contacts = [];
+
+    function displayContacts() {
+      document.getElementById("contactsOutput").innerHTML = "Contacts: " + contacts.join(", ");
+    }
+
+    function addName() {
+      const name = document.getElementById("nameInput").value.trim();
+      if (name === "") return;
+
+      if (contacts.length === 7) {
+        contacts.shift(); 
+      }
+      contacts.push(name); 
+      document.getElementById("nameInput").value = "";
+      displayContacts();
+    }
+
+    function removeName() {
+      contacts.pop();
+      displayContacts();
+    }
+
+    displayContacts(); 
+  </script>
+</body>
+</html>

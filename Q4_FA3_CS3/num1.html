@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Number Shape Generator</title>
+</head>
+<body>
+  <h2>Number Shape Generator</h2>
+  <div id="output"></div>
+
+  <script>
+    function getNumberInput() {
+      let input;
+      do {
+        input = prompt("Please enter a number:");
+      } while (isNaN(input) || input.trim() === "");
+
+      const number = parseInt(input);
+      let output = `Number inputted: ${number}<br><br>`;
+
+      if (number % 2 !== 0) {
+        for (let i = number; i >= 1; i--) {
+          for (let j = 0; j < number; j++) {
+            output += i + " ";
+          }
+          output += "<br>";
+        }
+      } else {
+        for (let i = number; i >= 1; i--) {
+          for (let j = 0; j < i; j++) {
+            output += i + " ";
+          }
+          output += "<br>";
+        }
+      }
+
+      document.getElementById("output").innerHTML = output;
+    }
+
+    getNumberInput();
+  </script>
+</body>
+</html>
